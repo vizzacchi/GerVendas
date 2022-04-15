@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="ajOperadora.php" server="ftp.planosdesaudevaledoparaiba.com.br" local="132730152412764655" remote="132731011200000000" Dst="0" />
+<file name="ajOperadoraInclusao.php" server="ftp.planosdesaudevaledoparaiba.com.br" local="132730129183830672" remote="132731011200000000" Dst="0" />
+<file name="ajOperadoraElimina.php" server="ftp.planosdesaudevaledoparaiba.com.br" local="132719727254797075" remote="132719749200000000" Dst="0" />
+<file name="ajOperadoraContato.php" server="ftp.planosdesaudevaledoparaiba.com.br" local="132730169060384484" remote="132731011200000000" Dst="0" />
+<file name="ajContatoElimina.php" server="ftp.cotador.sjc.br" local="132878488838527406" remote="132878543400000000" Dst="0" />
+<file name="ajContatoInclusao.php" server="ftp.cotador.sjc.br" local="132878488900258831" remote="132878543400000000" Dst="0" />
+<file name="ajContatos.php" server="ftp.cotador.sjc.br" local="132878488966065442" remote="132878543400000000" Dst="0" />
+<file name="ajContatoValidaEmail.php" server="ftp.cotador.sjc.br" local="132878489046101735" remote="132878543400000000" Dst="0" />
+<file name="ajCorretora.php" server="ftp.cotador.sjc.br" local="132878489108557400" remote="132878543400000000" Dst="0" />
+<file name="ajCorretoraContato.php" server="ftp.cotador.sjc.br" local="132878489168003515" remote="132878543400000000" Dst="0" />
+<file name="ajCorretoraElimina.php" server="ftp.cotador.sjc.br" local="132878489227246906" remote="132878543400000000" Dst="0" />
+<file name="ajCorretoraInclusao.php" server="ftp.cotador.sjc.br" local="132878489293103401" remote="132878543400000000" Dst="0" />
+<file name="ajCorretores.php" server="ftp.cotador.sjc.br" local="132878489353782772" remote="132878544000000000" Dst="0" />
+<file name="ajCorretoresComVenda.php" server="ftp.cotador.sjc.br" local="132878489450065944" remote="132878544000000000" Dst="0" />
+<file name="ajCorretoresElimina.php" server="ftp.cotador.sjc.br" local="132878489548229015" remote="132878544000000000" Dst="0" />
+<file name="ajCorretoresInclusao.php" server="ftp.cotador.sjc.br" local="132878489606051964" remote="132878544000000000" Dst="0" />
+<file name="ajCorretoresValidaEmail.php" server="ftp.cotador.sjc.br" local="132878489660326449" remote="132878544000000000" Dst="0" />
+<file name="ajCotacao.php" server="ftp.cotador.sjc.br" local="132878636635213103" remote="132878636400000000" Dst="0" />
+<file name="ajOperadora.php" server="ftp.cotador.sjc.br" local="132878489823608421" remote="132878544000000000" Dst="0" />
+<file name="ajOperadoraContato.php" server="ftp.cotador.sjc.br" local="132878489889885155" remote="132878544000000000" Dst="0" />
+<file name="ajOperadoraElimina.php" server="ftp.cotador.sjc.br" local="132878489948689887" remote="132878544000000000" Dst="0" />
+<file name="ajOperadoraInclusao.php" server="ftp.cotador.sjc.br" local="132878490010000000" remote="132878544600000000" Dst="0" />
+<file name="ajPlanoElimina.php" server="ftp.cotador.sjc.br" local="132878490079382724" remote="132878544600000000" Dst="0" />
+<file name="ajPlanoInclusao.php" server="ftp.cotador.sjc.br" local="132878490141157225" remote="132878544600000000" Dst="0" />
+<file name="ajPlanos.php" server="ftp.cotador.sjc.br" local="132878490226485144" remote="132878544600000000" Dst="0" />
+<file name="ajTabelaBuscaPlano.php" server="ftp.cotador.sjc.br" local="132878490393120064" remote="132878544600000000" Dst="0" />
+<file name="ajTabelaElimina.php" server="ftp.cotador.sjc.br" local="132878490452465524" remote="132878545200000000" Dst="0" />
+<file name="ajTabelaInclusao.php" server="ftp.cotador.sjc.br" local="132878490513284642" remote="132878545200000000" Dst="0" />
+<file name="ajTabelas.php" server="ftp.cotador.sjc.br" local="132878490575734789" remote="132878545200000000" Dst="0" />
+<file name="ajTabelasPlanos.php" server="ftp.cotador.sjc.br" local="132878490633323457" remote="132878545200000000" Dst="0" />
+<file name="ajAntigas.php" server="ftp.cotador.sjc.br" local="132900340298971592" remote="132900340200000000" Dst="0" />
+<file name="ajAntigasCBOVendedor.php" server="ftp.cotador.sjc.br" local="132878494086254137" remote="132878542800000000" Dst="0" />
+<file name="ajAntigasDetalhe.php" server="ftp.cotador.sjc.br" local="132902734107074388" remote="132902734200000000" Dst="0" />
+<file name="ajAntigasOperadora.php" server="ftp.cotador.sjc.br" local="132878488547651596" remote="132878542800000000" Dst="0" />
+<file name="ajAntigasVendedor.php" server="ftp.cotador.sjc.br" local="132878488014813104" remote="132878542800000000" Dst="0" />
+<file name="ajCadastroCorretor.php" server="ftp.cotador.sjc.br" local="132886211587369009" remote="132900325200000000" Dst="0" />
+<file name="error_log" server="ftp.cotador.sjc.br" local="132900323400000000" remote="132900323400000000" Dst="0" />
+<file name="ajCadastroCBOoperadora.php" server="ftp.cotador.sjc.br" local="132886216237213036" remote="132900325200000000" Dst="0" />
+<file name="ajCadastroCBOplano.php" server="ftp.cotador.sjc.br" local="132886216954325426" remote="132900325200000000" Dst="0" />
+<file name="ajRegiao.php" server="ftp.cotador.sjc.br" local="132878490332198052" remote="132878544600000000" Dst="0" />
+<file name="ajCadastroInclusao.php" server="ftp.cotador.sjc.br" local="132900314233733208" remote="132900325200000000" Dst="0" />
+<file name="ajCadastroInclusao2.php" server="ftp.cotador.sjc.br" local="132900311523755884" remote="132900325200000000" Dst="0" />
+</dwsync>

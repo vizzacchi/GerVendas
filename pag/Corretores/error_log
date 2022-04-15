@@ -1,0 +1,6 @@
+[31-Jan-2022 12:05:13 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
+[31-Jan-2022 12:05:14 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
+[01-Feb-2022 11:22:20 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
+[01-Feb-2022 11:22:20 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
+[18-Feb-2022 11:32:30 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
+[18-Feb-2022 11:32:30 America/Fortaleza] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home1/plan7923/cotador.sjc.br/inc/conexao.php on line 2
