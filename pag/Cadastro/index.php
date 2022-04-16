@@ -344,8 +344,8 @@ include "../../inc/header.php";
         </div> 
             <p>&nbsp;</p>
             <button class="btn btn-primary" type="submit" name="salvar" id="salvar">Salvar</button>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDependente" disabled id="dependente" name="dependente">
-			  Incluir Dependente
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDependente"  id="dependente" name="dependente">
+			  Incluir Beneficiários
 			</button>
          
     </form>         
@@ -360,19 +360,26 @@ include "../../inc/header.php";
   <div class="modal-dialog modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Inclusão de Dependentes</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Inclusão de Beneficiários</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <form>
+          <form method="post" action="" name="frmBeneficiario" id = "frmBeneficiario" onSubmit="return processaInclusaoBeneficiario()">
 			  <div class="row">
 				   <div class="col-sm-4">
+					   	Titular:
+						<input list="titulares" id="depTitular" name="depTitular" class="form-select form-control form-control-sm" required  placeholder="ex: Selecione ou informe um novo titular">
+						<datalist id="titulares">
+							<option>Selecione o Titular:</option>
+					   </datalist>
+				  </div>
+				  <div class="col-sm-4">
 						Tipo:
 						<select class="form-select form-control form-control-sm" aria-label="Sexo" id="cboDepTipo" name="cboDepTipo" >
 						  <option value = "0">Titular</option>
-						  <option value = "1" selected>Dependente</option>    
+						  <option value = "1">Dependente</option>    
 						</select>                     
 					</div>  
 		  			<div class="col-sm-4">
@@ -382,7 +389,9 @@ include "../../inc/header.php";
 							  Nome é obrigatório.
 						</div> 
 				   </div>
-				   <div class="col-sm-2">
+				</div>
+				  <div class="row">
+				   	<div class="col-sm-2">
 						Sexo:
 						<select class="form-select form-control form-control-sm" aria-label="Sexo" id="depSexo" name="depSexo">
 						  <option selected></option>
@@ -390,47 +399,47 @@ include "../../inc/header.php";
 						  <option value = "F">Fem</option>    
 						</select>                     
 
-                </div>  
-                <div class="col-sm-2">
-                    Data Nascimento:
-                    <input class="form-control form-control-sm" type="date" id="depDtNascimento" name="depDtNascimento" required>
-                    <div class="invalid-feedback">
-                          Informe a data de nascimento.
-                    </div> 
-                </div>	
-			</div>
-			  <div class="row">
-                <div class="col-sm-4">
-                    RG:
-                    <input class="form-control form-control-sm" type="text" id="depRG" name="depRG">                    
-                </div>
-                <div class="col-sm-4">
-                    CPF:
-                    <input class="form-control form-control-sm" type="text" id="depCPF" name="depCPF" value="" required onChange="validaCPF('depCPF')" onKeyPress="return teclas(event)">
-                    <div class="invalid-feedback">
-                          CPF é obrigatório.
-                    </div> 
-                </div>
-                <div class="col-sm-4">
-                    E-mail:
-                    <input class="form-control form-control-sm" type="email" id="depEmail" name="depEmail" required>
-                    <div class="invalid-feedback">
-                          E-mail é obrigatório.
-                    </div> 
-                </div>    
+                	</div>  
+               		<div class="col-sm-2">
+						Data Nascimento:
+						<input class="form-control form-control-sm" type="date" id="depDtNascimento" name="depDtNascimento" required>
+						<div class="invalid-feedback">
+							  Informe a data de nascimento.
+						</div> 
+               		</div>	
+					<div class="col-sm-4">
+						RG:
+						<input class="form-control form-control-sm" type="text" id="depRG" name="depRG">                    
+					</div>
+					<div class="col-sm-4">
+						CPF:
+						<input class="form-control form-control-sm" type="text" id="depCPF" name="depCPF" value="" required onChange="validaCPF('depCPF')" onKeyPress="return teclas(event)">
+						<div class="invalid-feedback">
+							  CPF é obrigatório.
+						</div> 
+					</div>
 			  </div>
-			  <div class="row">
-				<div class="col-sm-12">
-					<input type="text" id="idBeneficiario">
-					<input type="text" id="idVenda">
-				
-				</div>
-			  </div>
-		  </form>
-      
+				<div class="row">
+					<div class="col-sm-4">
+					  Telefone 1:
+                  	  <input class="form-control form-control-sm" type="text" id="depTelefone1" name="depTelefone1" onKeyPress="return teclas(event)">   
+					</div>
+					<div class="col-sm-4">
+					  Telefone 2:
+                  	  <input class="form-control form-control-sm" type="text" id="depTelefone2" name="depTelefone2" onKeyPress="return teclas(event)">   					
+					</div>
+					<div class="col-sm-4">
+						E-mail:
+						<input class="form-control form-control-sm" type="email" id="depEmail" name="depEmail"> 
+                	</div>    
+			  	</div>
+			  <input type="text" hidden="true" id="idVenda" name="idVenda">
+	
+      <p>&nbsp;</p>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelar" name="cancelar">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+	</form>
       </div>
     </div>
   </div>

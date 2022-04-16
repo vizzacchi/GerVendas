@@ -83,6 +83,18 @@ $( document ).ready(function() {
             $("#txtEmailTitular").attr('value', $(this).val() );
         }
     });
+	$("#depTitular").blur(function(){
+		var tipo = $("#depTitular").val();
+		if (!isNaN(tipo)){
+			$("#cboDepTipo").val(1);
+			$("#depNome").val("");
+			
+		} else{
+			$("#cboDepTipo").val(0);
+			$("#depNome").val($("#depTitular").val());
+		}
+	});
+
     //Quando o campo cep perde o foco.
     $("#txtCep").blur(function() {
 
@@ -287,18 +299,54 @@ function processaInclusao(){
 							alert(xhr.responseText);
 							return false;
 						}else{
+						    alert("Cadastre mais beneficiários!")
 						    const json = xhr.responseText;
 						    const obj = JSON.parse(json);
-						    $('#idBeneficiario').val(obj.beneficiario);
-						    $('#idVenda').val(obj.venda);
-						    $("#salvar").prop("disabled", true); 
-						    $("#dependente").prop("disabled",false);
-							return false;
+						   var idVenda = obj.venda;
+						   
+						   $("#idVenda").val(idVenda);
+						   
+						   $("#titulares").load("../../ajax/pag/ajCadastroDepTitulares.php",{venda:idVenda});			   
+
+						   $("#salvar").prop("disabled", true); 
+						   $("#dependente").prop("disabled",false);
+						   return false;
 						}
 					}
 				}
 			}	
 };       
+						   
+function processaInclusaoBeneficiario(){
+	var email 		= $("#depEmail").val();
+	var telefone	= $("#depTelefone1").val();
+	if(email==""){
+		alert("Para o titular o campo e-mail é obrigatório!");
+		return false;
+	}else{
+		if(telefone==""){
+			alert("Para titular precisamos ter pelo menos um telefone informado!");
+			return false;
+		}else{
+			dados = $("#frmBeneficiario").serializeObject();
+    		$("#listagem").load("../../ajax/pag/ajCadastroBeneficiarios.php",dados);
+						   
+						   $("#depTitular").val("");
+						   $("#cboDepTipo").val("");
+						   $("#depNome").val("");
+						   $("#depSexo").val("");
+						   $("#depDtNascimento").val("");
+						   $("#depRG").val("");
+						   $("#depCPF").val("");
+						   $("#depTelefone1").val("");
+						   $("#depTelefone2").val("");
+						   $("#depEmail").val("");
+			
+			$('#cancelar').trigger('click');
+			return false;		   
+		}				   
+	}				   			   
+};					   
 
                            
 
