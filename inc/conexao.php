@@ -7,14 +7,4 @@
 		  exit();
 	   }
     }
-	$servidor = 'gerpilon.mysql.dbaas.com.br';
-	$user = 'gerpilon';
-	$senha = 'Dd395184';
-	$db='gerpilon';
-	$conexao = mysqli_connect("$servidor", $user, $senha, $db);
-
-	if (mysqli_connect_errno()) {
-		printf("Connect failed: %s\n", mysqli_connect_error());
-		exit();
-	}
 ?>

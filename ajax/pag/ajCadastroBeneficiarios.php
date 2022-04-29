@@ -30,7 +30,7 @@ if($rs=mysqli_query($conn,$qsql)){
 }else{
 	echo "<h2 align='center'>Não foi possível incluir o beneficiário</h2>";
 }
-$qsqlBeneficiario = "Select * from vendabeneficiario where idVenda = $idVenda order by  id";
+$qsqlBeneficiario = "Select * from vendabeneficiario where idVenda = $idVenda and tipoBeneficiario < 2 order by  id";
 	if($rsBeneficiario=mysqli_query($conn,$qsqlBeneficiario)){?>
 		<table class="table table-striped">
 		  <thead>
@@ -69,13 +69,26 @@ $qsqlBeneficiario = "Select * from vendabeneficiario where idVenda = $idVenda or
 					 	<td><?php echo $reg['email'];?></td>
 					</tr>		
 			<?php	
-					$vidas = $vidas + 1;
 				}?>
 					</tbody>
 	<?php
 	}
+$qsql = "Select id from vendabeneficiario where idVenda = $idVenda and tipoBeneficiario < 2";
+if($rs=mysqli_query($conn,$qsql)){
+	$numBeneficiarios=mysqli_num_rows($rs);
+}
 
-			?>			
+$qsql = "select numVidas from venda where id = $idVenda";
+if($rs=mysqli_query($conn,$qsql)){
+	$reg = mysqli_fetch_array($rs);
+	$numVidas= $reg['numVidas'];
+}
+
+if($numBeneficiarios==$numVidas){
+	echo "<script language='javaScript'>location. reload();</script>";
+}
+?>	
+		
 
 
 

@@ -12,8 +12,13 @@ $profissao		= $_POST['cboProfissao'];
 $numTitulares	= $_POST['cboNumTitular'];
 $acomodacao		= $_POST['cboAcomodacao'];
 $coparticipacao = $_POST['cboCoparticipacao'];
-	
-$parametros = $profissao."#".$contratacao."#".$numTitulares."#".$nomeCliente."#".$tipoPlano;
+if(isset($_POST['empIndividual'])){
+	$individual     = $_POST['empIndividual'] ;
+}else{
+	$individual = 0;
+}
+
+$parametros = $profissao."#".$contratacao."#".$numTitulares."#".$nomeCliente."#".$tipoPlano."#".$individual;
 
 
 if($acomodacao == 'Ambos'){

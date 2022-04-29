@@ -10,7 +10,7 @@ include "../../inc/header.php";
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1 align="center">ATUALIZAÇÂO URGENTE!!!</h1>
+                <h1 align="center">ATUALIZAÇÃO URGENTE!!!</h1>
                 <p>&nbsp;</p>
                 <h2 align="center">13/04/2022 - 130 vidas cadastradas</h2>
                 <figure class="figure" align="center">

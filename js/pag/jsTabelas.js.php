@@ -177,7 +177,6 @@ function btnAlterar(id,validade,plano,umTitular,compulsorio,vidas_ini,vidas_fim,
 };   
 
 function alterando(){
-alert("Alterando");
     $("#id").prop("disabled", false);
     $("#cod_oper").prop("disabled", false);                           
     $("#txtValidade").prop("disabled", false);

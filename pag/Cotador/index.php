@@ -28,11 +28,18 @@ include "../../inc/header.php";
 			  	<label>Contratação:</label>	
 		  	  	<select class="form-control" id="cboContratacao" name="cboContratacao">
 		  	    	<option value="1">Compulsório</option>
-		  	    	<option value="0">Opcional ou MEI Sulamérica e Amil</option>
-                    <option value="2">Empresário Individual/MEI Bradesco</option>
+		  	    	<option value="0">Opcional</option>
               	</select>
 			  </div>		  
 		  	</div>
+			<div class="form-check" id="individual" name="individual" style="display: none">
+				<p>&nbsp;</p>
+				<input class="form-check-input" type="checkbox" value="1" id="empIndividual" name="empIndividual">
+				<label class="form-check-label" for="empIndividual">
+    				Empresário Individual?
+  				</label>
+
+			</div>  
 
 		<div id='PF' class="col">
 			<label>Escolha a tabela de Adesão:</label>

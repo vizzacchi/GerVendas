@@ -3,8 +3,8 @@ include "../../func/func.php";
 include "../../inc/conexao.php";
 include "../../inc/valida_login.php";
 
-if(!empty($_POST['idVenda'])){
-	$id = $_POST['idVenda'];
+if(!empty($_POST['venda'])){
+	$id = $_POST['venda'];
 	$condicao = " idVenda = $id and tipoBeneficiario = 0";
 }
 else{

@@ -65,7 +65,7 @@ include "../../inc/header.php";
           </div>
           <div class="mb-3">
             <label for="txtPlano" class="form-label">Plano</label>
-            <select class="form-control col-sm-12" id="txtPlano" name="txtPlano" requerid disabled onChange="validarPlano()">
+            <select class="form-control col-sm-12" id="txtPlano" name="txtPlano" requerid disabled ><!-- onChange="validarPlano()" -->
                 <option value = '' selected>Escolha o plano:</option>
                 
              </select>

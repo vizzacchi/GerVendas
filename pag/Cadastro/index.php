@@ -157,13 +157,6 @@ include "../../inc/header.php";
             </div> 
             <div class="row">
                 <div class="col-sm-4">
-                    Contrato: 
-                    <input class="form-control form-control-sm" type="text" id="txtContrato" name="txtContrato" required>                     
-                    <div class="invalid-feedback">
-                          Informe o número do contrato/proposta.
-                    </div> 
-                </div>
-                <div class="col-sm-4">
                     Operadora:
                     <select class="form-select form-control form-control-sm" aria-label="Operadora" id="cboOperadora" name="cboOperadora" required>
                       <option>Selecione o tipo de plano primeiro...</option>   
@@ -180,7 +173,14 @@ include "../../inc/header.php";
                     <div class="invalid-feedback">
                           Selecione um plano.
                     </div> 
-                </div>                
+                </div>  
+                <div class="col-sm-4">
+                    Contrato: 
+                    <input class="form-control form-control-sm" type="text" id="txtContrato" name="txtContrato" required>                     
+                    <div class="invalid-feedback">
+                          Informe o número do contrato/proposta.
+                    </div> 
+                </div>				
             </div>    
             <div class="row">
                 <div class="col-sm-4">
@@ -340,11 +340,11 @@ include "../../inc/header.php";
                           E-mail é obrigatório.
                     </div> 
                 </div>                
-            </div>              
+            </div>   
         </div> 
             <p>&nbsp;</p>
             <button class="btn btn-primary" type="submit" name="salvar" id="salvar">Salvar</button>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDependente"  id="dependente" name="dependente">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDependente" disabled id="dependente" name="dependente">
 			  Incluir Beneficiários
 			</button>
          
@@ -377,7 +377,7 @@ include "../../inc/header.php";
 				  </div>
 				  <div class="col-sm-4">
 						Tipo:
-						<select class="form-select form-control form-control-sm" aria-label="Sexo" id="cboDepTipo" name="cboDepTipo" >
+						<select class="form-select form-control form-control-sm" aria-label="tipo" id="cboDepTipo" name="cboDepTipo" >
 						  <option value = "0">Titular</option>
 						  <option value = "1">Dependente</option>    
 						</select>                     

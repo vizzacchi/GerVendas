@@ -57,7 +57,17 @@ $( document ).ready(function() {
         $.post('../../ajax/pag/ajCadastroCBOplano.php', {'operadora': $(this).val(),'tipoPlano': $("#cboTipoPlano").val() }, function(data){
             $("#cboPlano").html(data);
         });
-    }); 
+    	if($("#cboOperadora").val()==60){
+			$.post('../../ajax/pag/ajCadastroContratoUnimed.php', {'operadora': $(this).val(),'tipoPlano': $("#cboTipoPlano").val() }, function(data){
+				$("#txtContrato").val(data);
+			});
+		}else{
+			$("#txtContrato").val('');
+		}
+
+
+
+	}); 
     $("#txtNome").change(function(){
         if($("#cboTipoPlano").val()=='PF'){
             $("#txtTitularNome").attr('value', $(this).val() );
@@ -93,6 +103,59 @@ $( document ).ready(function() {
 			$("#cboDepTipo").val(0);
 			$("#depNome").val($("#depTitular").val());
 		}
+	});
+	$("#txtDtNascimento").blur(function() {
+		var nascimento = new Date($("#txtDtNascimento").val());
+		var hoje       = new Date();
+		var intervalo = hoje - nascimento;
+		var idade = (intervalo / (1000 * 60 * 60 * 24 * 365.25));
+		if(idade < 0.0001 || idade>100 ){
+			alert("A idade informada foi "+Math.trunc(idade)+" informe outra data.");
+			$("#txtDtNascimento").val("");
+			$("#txtDtNascimento").focus();
+		}
+	});
+		$("#depDtNascimento").blur(function() {
+		var nascimento = new Date($("#depDtNascimento").val());
+		var hoje       = new Date();
+		var intervalo = hoje - nascimento;
+		var idade = (intervalo / (1000 * 60 * 60 * 24 * 365.25));
+		if(idade < 0.0001 || idade>100 ){
+			alert("A idade informada foi "+Math.trunc(idade)+" informe outra data.");
+			$("#depDtNascimento").val("");
+			$("#depDtNascimento").focus();
+		}
+	});
+			
+	$("#txtVigencia").blur(function() {
+		var nascimento = new Date($("#txtVigencia").val());
+		var hoje       = new Date();
+		var intervalo = nascimento - hoje;
+		var idade = (intervalo / (86400000));
+		if(idade < -30 || idade> 30 ){
+			alert("A vigência informada está "+Math.trunc(idade)+" dias de hoje.");
+			$("#txtVigencia").val("");
+			$("#txtVigencia").focus();
+		}
+	});
+	
+	$("#txtContrato").blur(function(){
+		var contrato = $("#txtContrato").val();
+		  var url="../../ajax/pag/ajCadastroVerifContrato.php?contrato="+contrato;
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200)
+                        if(xhr.responseText=="Sim"){
+                           }
+						else{
+							alert(xhr.responseText);
+						}
+					}
+				}
+				xhr.send(); 
+			
 	});
 
     //Quando o campo cep perde o foco.
@@ -320,33 +383,82 @@ function processaInclusao(){
 function processaInclusaoBeneficiario(){
 	var email 		= $("#depEmail").val();
 	var telefone	= $("#depTelefone1").val();
-	if(email==""){
+	if(email=="" && $("#cboDepTipo").val()=="0"){
 		alert("Para o titular o campo e-mail é obrigatório!");
 		return false;
 	}else{
-		if(telefone==""){
+		if(telefone=="" && $("#cboDepTipo").val()=="0"){
 			alert("Para titular precisamos ter pelo menos um telefone informado!");
 			return false;
 		}else{
-			dados = $("#frmBeneficiario").serializeObject();
-    		$("#listagem").load("../../ajax/pag/ajCadastroBeneficiarios.php",dados);
+			if($("#depNome").val()=="" || $("#depCPF").val()==""){
+				alert("Compo nome e CPF são obrigatórios");
+				return false;
 						   
-						   $("#depTitular").val("");
-						   $("#cboDepTipo").val("");
-						   $("#depNome").val("");
-						   $("#depSexo").val("");
-						   $("#depDtNascimento").val("");
-						   $("#depRG").val("");
-						   $("#depCPF").val("");
-						   $("#depTelefone1").val("");
-						   $("#depTelefone2").val("");
-						   $("#depEmail").val("");
-			
-			$('#cancelar').trigger('click');
-			return false;		   
-		}				   
-	}				   			   
-};					   
+			}else{			
+				dados = $("#frmBeneficiario").serializeObject();
+				$("#listagem").load("../../ajax/pag/ajCadastroBeneficiarios.php",dados);
 
+							   $("#depTitular").val("");
+							   $("#cboDepTipo").val("");
+							   $("#depNome").val("");
+							   $("#depSexo").val("");
+							   $("#depDtNascimento").val("");
+							   $("#depRG").val("");
+							   $("#depCPF").val("");
+							   $("#depTelefone1").val("");
+							   $("#depTelefone2").val("");
+							   $("#depEmail").val("");
+
+				$('#cancelar').trigger('click');
+					return false;   			
+			}
+		}
+	}				   				   			   
+};					   
+function calcularIdade(data) {
+	var now = new Date();
+	var today = new Date(now.getYear(),now.getMonth(),now.getDate());
+
+	var yearNow = now.getYear();
+	var monthNow = now.getMonth();
+	var dateNow = now.getDate();
+	var dob = new Date(data.substring(6,10),
+			data.substring(3,5)-1,                    
+			 data.substring(0,2)                
+			);
+
+	var yearDob = dob.getYear();
+	var monthDob = dob.getMonth();
+	var dateDob = dob.getDate();
+	var age = {};
+	yearAge = yearNow - yearDob;
+
+	if (monthNow >= monthDob)
+		var monthAge = monthNow - monthDob;
+	else {
+		yearAge--;
+		var monthAge = 12 + monthNow -monthDob;
+	}
+
+	if (dateNow >= dateDob)
+		var dateAge = dateNow - dateDob;
+	else {
+		monthAge--;
+	    var dateAge = 31 + dateNow - dateDob;
+
+	    if (monthAge < 0) {
+	      monthAge = 11;
+	      yearAge--;
+	    }
+	  }
+
+	age = {
+			years: yearAge,
+			months: monthAge,
+			days: dateAge
+		};
+	return age.years;
+}
                            
 

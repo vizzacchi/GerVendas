@@ -49,6 +49,7 @@ $contratacao  = $parametros[1];
 $numTitulares = $parametros[2];
 $nomeCliente  = $parametros[3];
 $tipoPlano    = $parametros[4];	
+$individual   = $parametros[5];
 ?>
 <section id='cotacao'>	
 	<h1 style="text-align: center">Pilon Vida e Saúde - <em>Cotação Planos de Saúde</em></h1>
@@ -77,16 +78,7 @@ $faixa8 = $_POST['faixa8']<>''?$_POST['faixa8']:0;
 $faixa9 = $_POST['faixa9']<>''?$_POST['faixa9']:0;
 $faixa10 = $_POST['faixa10']<>''?$_POST['faixa10']:0;
 $totalVidas = $faixa1 + $faixa2 + $faixa3 + $faixa4 + $faixa5 + $faixa6 + $faixa7 + $faixa8 + $faixa9 + $faixa10;
-
-
-    if($profissao=='Ambas'){
-        $tabela = "";
-    }
-    else{
-        $tabela = "(tabela.tabela = '$profissao' or tabela.tabela = '') and ";
-    }
-    
-
+ 
 $registros = count($_POST);
 
 for ($i=0;$i<=$registros;$i++){
@@ -94,22 +86,64 @@ for ($i=0;$i<=$registros;$i++){
 	if (substr($reg,0,5)=='plano'){
 		$codPlano = str_replace('plano','',$reg);
         
-        $qsqlPlano = "Select tabela.*, planos.id as cod_plano,planos.plano, planos.cod_oper,                      planos.tipo_plano, operadora.nome_abrev as nomeAbrev 
-                    from tabela_planos as tabela, planos, operadora 
-                    where tabela.plano     = planos.id           and
-                            planos.cod_oper  = operadora.id	     and
-	                        tabela.validade >=  now()            and 
-	                        tabela.plano     =  $codPlano	     and
-	                        (tabela.umTitular = $numTitulares    or
-	                        tabela.umTitular =  ''          )    and
-	                        $tabela
-				            (tabela.compulsorio = '$contratacao' or
-							tabela.compulsorio = ''         ) and                           tabela.vidas_ini <= $totalVidas	  and
-	                        tabela.vidas_fim >= $totalVidas
-                            order by tabela";
-        
-		
-		if($rdPlano = mysqli_query($conn,$qsqlPlano)){
+        if($tipoPlano=="PF" or ($tipoPlano=="PJ" and $individual == '0')){
+			$qsqlPlano = "Select tabela.*, planos.id as cod_plano,planos.plano, 
+							planos.cod_oper, planos.tipo_plano, operadora.nome_abrev as nomeAbrev from tabela_planos as tabela, planos, operadora 
+							where 
+								tabela.plano     = planos.id         and
+								planos.cod_oper  = operadora.id	     and
+								tabela.validade >=  now()            and 
+								tabela.plano     =  $codPlano	     and
+								(tabela.umTitular = $numTitulares    or
+								tabela.umTitular =  ''          )    and
+								(tabela.tabela = '$profissao'        or
+								tabela.tabela = '')                  and
+								(tabela.compulsorio = '$contratacao' or
+								tabela.compulsorio = ''         )    and 
+								tabela.vidas_ini <= $totalVidas	     and
+								tabela.vidas_fim >= $totalVidas		 and
+								tabela.empresarioIndividual = $individual
+								order by tabela";
+		}else{
+			$qsqlPlano = "Select tabela.*, planos.id as cod_plano,planos.plano, 
+				planos.cod_oper, planos.tipo_plano, operadora.nome_abrev as nomeAbrev from tabela_planos as tabela, planos, operadora 
+				where 
+					tabela.plano     = planos.id         and
+					planos.cod_oper  = operadora.id	     and
+					tabela.validade >=  now()            and 
+					tabela.plano     =  $codPlano	     and
+					(tabela.umTitular = $numTitulares    or
+					tabela.umTitular =  ''          )    and
+					(tabela.tabela = '$profissao'        or
+					tabela.tabela = '')                  and
+					(tabela.compulsorio = '$contratacao' or
+					tabela.compulsorio = ''         )    and 
+					tabela.vidas_ini <= $totalVidas	     and
+					tabela.vidas_fim >= $totalVidas		 and
+					tabela.empresarioIndividual = $individual
+					order by tabela";
+
+		}
+		if(!$rdPlano = mysqli_query($conn,$qsqlPlano)){
+			$qsqlPlano = "Select tabela.*, planos.id as cod_plano,planos.plano, 
+				planos.cod_oper, planos.tipo_plano, operadora.nome_abrev as nomeAbrev from tabela_planos as tabela, planos, operadora 
+				where 
+					tabela.plano     = planos.id         and
+					planos.cod_oper  = operadora.id	     and
+					tabela.validade >=  now()            and 
+					tabela.plano     =  $codPlano	     and
+					(tabela.umTitular = $numTitulares    or
+					tabela.umTitular =  ''          )    and
+					(tabela.tabela = '$profissao'        or
+					tabela.tabela = '' )                 and
+					(tabela.compulsorio = '$contratacao' or
+					tabela.compulsorio = ''         )    and 
+					tabela.vidas_ini <= $totalVidas	     and
+					tabela.vidas_fim >= $totalVidas		 and
+					tabela.empresarioIndividual = '0'
+					order by tabela";
+		}
+		elseif($rdPlano = mysqli_query($conn,$qsqlPlano)){
 			while($regPlano=mysqli_fetch_array($rdPlano)){
 				$nomeAbrev = $regPlano['nomeAbrev'];
 				$codPlano  = $regPlano['cod_plano'];
@@ -247,6 +281,7 @@ for ($i=0;$i<=$registros;$i++){
 </div>
 <p>&nbsp;</p>
 <p>As tabelas podem sofrer alteração sem aviso prévio.</p>
+<p>Valores para região do Vale do Paraíba, o valor pode sofrer alteração em outras regiões.</p>
 	<?php
 	$id = $_SESSION['UsuarioID'];
 	$qsql = "SELECT corretores.corretor,corretores.celular, corretores.email, corretora.telefone, corretora.logo FROM `corretores`,`corretora` WHERE corretores.id_corretora = corretora.id and corretores.id = $id";
