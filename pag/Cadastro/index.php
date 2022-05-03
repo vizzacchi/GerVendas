@@ -370,10 +370,9 @@ include "../../inc/header.php";
 			  <div class="row">
 				   <div class="col-sm-4">
 					   	Titular:
-						<input list="titulares" id="depTitular" name="depTitular" class="form-select form-control form-control-sm" required  placeholder="ex: Selecione ou informe um novo titular">
-						<datalist id="titulares">
-							<option>Selecione o Titular:</option>
-					   </datalist>
+						<select class="form-select form-control form-control-sm" aria-label="Titular" id="cboDepTitular" name="cboDepTitular" >
+						  <option>Selecione o Titular:</option>    
+						</select> 
 				  </div>
 				  <div class="col-sm-4">
 						Tipo:

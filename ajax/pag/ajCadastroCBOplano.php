@@ -17,7 +17,7 @@ $qsql = "SELECT id, plano from planos $condicao ORDER BY plano";
 if($rs=mysqli_query($conn,$qsql)){
     echo "<option></option>";
     while($reg=mysqli_fetch_array($rs)){
-       echo "<option value='".$reg['id']."'>".$reg['plano']."</option>";
+       echo "<option value='".$reg['id']."'>".ucfirst($reg['plano'])."</option>";
     }
 }
 

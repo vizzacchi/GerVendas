@@ -58,27 +58,26 @@ if($rs = mysqli_query($conn,$qsql)){
         
         $qsqlBeneficiario = "INSERT INTO `vendabeneficiario` (`idVenda`, `tipoBeneficiario`, `nome`, `sexo`, `dtNascimento`, `rg`, `cpf`, `telefone1`, `telefone2`, `email`, `situacao`,`titulo`) VALUES ('$id','$tipoBeneficiario', '$nomeBeneficiario', '$sexoBeneficiario', '$dtNascimento', '$rg', '$cpfBeneficiario', '$telefone1Beneficiario', '$telefone2Beneficiario', '$emailBeneficiario', '1','0')";
         
-        if($rsBeneficiario=mysqli_query($conn,$qsqlBeneficiario)){
-			$idBeneficiario = mysqli_insert_id($conn);
-			mysqli_commit($conn);
-			if($numVidas==1 and $tipoPlano=='PF'){
-				echo "Proposta cadastrada com sucesso";
-			}else{
-				$dados = array(
-					'venda' => $id,
-					'beneficiario' => $idBeneficiario
-				);
-				echo json_encode($dados);
-			}
-        }else{
-			$situacao = 1;
-			echo "Não foi possível cadastrar a proposta";
-		}
-        
+      if($rsBeneficiario=mysqli_query($conn,$qsqlBeneficiario)){
+			    $idBeneficiario = mysqli_insert_id($conn);
+			    mysqli_commit($conn);
+			    if($numVidas==1 and $tipoPlano=='PF'){
+				    echo "Proposta cadastrada com sucesso";
+			    }else{
+				    $dados = array(
+					  'venda' => $id,
+					  'beneficiario' => $idBeneficiario
+				    );
+				    echo json_encode($dados);
+			    }
+      }else{
+			  $situacao = 1;
+			  echo "Não foi possível cadastrar a proposta";
+		  }  
     }else{
-		$situacao = 1;
-		echo "Não foi possível cadastrar a proposta";
-	}
+		  $situacao = 1;
+		  echo "Não foi possível cadastrar a proposta";
+	  }
 }else{
 	$situacao = 1;
 	echo "Não foi possível cadastrar a proposta";

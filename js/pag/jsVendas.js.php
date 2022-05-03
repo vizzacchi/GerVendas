@@ -15,6 +15,10 @@ $( document ).ready(function() {
     }); 
 
     $("#cboTipo").change(function(){
+        $("#cboOperadora").html('<option value="">Carregando...</option>');
+        $.post('../../ajax/pag/ajVendasOperadora.php', {'tipoPlano': $(this).val() }, function(data){
+            $("#cboOperadora").html(data);
+        });
        pesquisar();
     });
 

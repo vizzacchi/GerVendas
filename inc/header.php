@@ -98,6 +98,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="mnuFinanceiro">
           <a class="dropdown-item" href="#" id="mnuComissaoOperadora">Comissão das Operadora</a>
+		  <a class="dropdown-item" href="../VendaInterna/" id="mnu1ParcelaVendaInterna">1° Parcela Venda Interna</a>
           <div class="dropdown-divider"></div>            
           <a class="dropdown-item" href="#" id="mnuComissaoPagar">Comissão a Pagar</a>
         </div>

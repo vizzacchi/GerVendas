@@ -18,6 +18,8 @@ $( document ).ready(function() {
         });
       }, false);
     })();	
+
+
     function limpa_formulário_cep() {
 		// Limpa valores do formulário de cep.
 		$("#txtEndereco").val("");
@@ -64,9 +66,6 @@ $( document ).ready(function() {
 		}else{
 			$("#txtContrato").val('');
 		}
-
-
-
 	}); 
     $("#txtNome").change(function(){
         if($("#cboTipoPlano").val()=='PF'){
@@ -93,8 +92,8 @@ $( document ).ready(function() {
             $("#txtEmailTitular").attr('value', $(this).val() );
         }
     });
-	$("#depTitular").blur(function(){
-		var tipo = $("#depTitular").val();
+	$("#cboDepTitular").blur(function(){
+		var tipo = $("#cboDepTitular").val();
 		if (!isNaN(tipo)){
 			$("#cboDepTipo").val(1);
 			$("#depNome").val("");
@@ -344,7 +343,38 @@ $( document ).ready(function() {
         };	
                            
 function processaInclusao(){
-	
+	if($('#cboCorretora').val()=="" 		|| 
+	 	$('#cboCorretor').val()=="" 		|| 
+		$('#cboTipoPlano').val()=="" 		|| 
+		$('#txtNome').val()=="" 			||
+		$('#txtCPF').val()=="" 				|| 
+		$('#txtVigencia').val() == "" 		|| 
+		$('#txtVigencia').val()=="" 		|| 
+		$('#txtVencimento').val()==0 		||
+	    $('#txtVencimento').val() =="" 		|| 
+		$('#cboOperadora').val() =="" 		|| 
+		$('#cboPlano').val()== ""       	||
+		$('#txtContrato').val()=="" 		||
+		$('#txtNumVidas').val()=="" 		||
+		$('#txtValor').val()=="" 			||
+		$('#txtCep').val()=="" 				||
+		$('#txtEndereco').val()==""			||
+		$('#txtBairro').val()==""			||
+		$('#txtCidade').val()==""			||
+		$('#txtUF').val()==""				||
+		$('#txtTelefone1').val()==""		||
+		$('#txtEmail').val()==""			||
+		$('#txtDtNascimento').val()==""		||
+		$('#txtCPFtitular').val()==""		||
+		$('#txtTelefone1Titular').val()=="" ||
+		$('#txtEmailTitular').val()==""
+						   ){
+						   alert("Existe campo obrigatório em branco!");
+			return false;
+						   }
+						   
+						   
+						   
     dados = $("#frmCadastro").serializeObject();
     variaveis = JSON.stringify(dados);
     
@@ -369,8 +399,12 @@ function processaInclusao(){
 						   
 						   $("#idVenda").val(idVenda);
 						   
-						   $("#titulares").load("../../ajax/pag/ajCadastroDepTitulares.php",{venda:idVenda});			   
-
+						   
+						$("#cboDepTitular").html('<option value="">Carregando...</option>');
+						$.post('../../ajax/pag/ajCadastroDepTitulares.php', {'id': idVenda}, function(data){
+							$("#cboDepTitular").html(data);
+						});						   
+						   
 						   $("#salvar").prop("disabled", true); 
 						   $("#dependente").prop("disabled",false);
 						   return false;
@@ -410,8 +444,8 @@ function processaInclusaoBeneficiario(){
 							   $("#depTelefone2").val("");
 							   $("#depEmail").val("");
 
-				$('#cancelar').trigger('click');
-					return false;   			
+							$('#cancelar').trigger('click');
+							return false;   			
 			}
 		}
 	}				   				   			   

@@ -90,7 +90,7 @@ if(!empty($_POST['vendedor']) and $_POST['vendedor']<>'0'){
 		$qsql = "SELECT id, corretor from corretores where cpf = $cpf ";
 		if($rs=mysqli_query($conn,$qsql)){
 			$reg=mysqli_fetch_array($rs);
-			echo "<option value='".$reg['id']."'>".$reg['corretor']."</option>";
+			$vendedor = "and cod_vendedor = '".$reg['id']."'";
 		}
 		
     }
@@ -114,7 +114,7 @@ if($rs=mysqli_query($conn,$qsql)){
           <table class="table table-striped table-sm tablesorter" id="tbVendas">
             <thead>
                 <tr>
-                    <th scope="col" style="font-size: 0.8rem">Inclusão</th>
+                    <th scope="col" style="font-size: 0.8rem">Cadastro</th>
 					<th scope="col" style="font-size: 0.8rem">Mes</th>
                     <th scope="col" style="font-size: 0.8rem">Nome Cliente</th>
                     <th scope="col" style="font-size: 0.8rem">Tipo</th>
@@ -148,7 +148,7 @@ if($rs=mysqli_query($conn,$qsql)){
             <td style="font-size: 0.7rem"><?php echo $reg['nome'];?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['tipoPlano'];?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['nome_abrev'];?></td>
-            <td style="font-size: 0.7rem"><?php echo $reg['plano'];?></td>
+            <td style="font-size: 0.7rem"><?php echo ucfirst($reg['plano']);?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['numVidas'];?></td>
             <td style="font-size: 0.7rem"><?php echo number_format($reg['valor'], 2, ',', '.');?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['corretor'];?></td>

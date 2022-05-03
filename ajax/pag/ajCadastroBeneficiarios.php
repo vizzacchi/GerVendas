@@ -3,9 +3,9 @@ include "../../func/func.php";
 include "../../inc/conexao.php";
 include "../../inc/valida_login.php";
 
-if(is_numeric($_POST['depTitular'])){
+if(is_numeric($_POST['cboDepTitular'])){
 	//Cadastro de dependente
-	$idTitular = $_POST['depTitular'];
+	$idTitular = $_POST['cboDepTitular'];
 }else{
 	//Cadastro de titular
 	$idTitular = 0;
@@ -23,7 +23,7 @@ $idVenda		  = $_POST['idVenda'];
 $vidas            = 0;
 
 $qsql = "Insert into vendabeneficiario (`idTitular`, `idVenda`, `tipoBeneficiario`, `nome`, `sexo`, `dtNascimento`, `rg`, `cpf`, `telefone1`, `telefone2`, `email`, `situacao`, `titulo`) Values ($idTitular, '$idVenda', '$tipoBeneficiario', '$nome', '$sexo', '$dtNascimento1', '$rg', '$cpf', '$telefone1', '$telefone2', '$email', 1, 0 )";
-echo "<script>".$qsql."</script>";
+
 
 if($rs=mysqli_query($conn,$qsql)){
 	echo "<h2 align='center'>Usuário incluído com sucesso</h2>";
@@ -77,7 +77,6 @@ $qsql = "Select id from vendabeneficiario where idVenda = $idVenda and tipoBenef
 if($rs=mysqli_query($conn,$qsql)){
 	$numBeneficiarios=mysqli_num_rows($rs);
 }
-
 $qsql = "select numVidas from venda where id = $idVenda";
 if($rs=mysqli_query($conn,$qsql)){
 	$reg = mysqli_fetch_array($rs);
@@ -86,6 +85,14 @@ if($rs=mysqli_query($conn,$qsql)){
 
 if($numBeneficiarios==$numVidas){
 	echo "<script language='javaScript'>location. reload();</script>";
+}else{
+	echo 	
+		"<script>	
+			$('#cboTitular').html('<option>Carregando...</option>');
+			$.post('../../ajax/pag/ajCadastroDepTitulares.php', {'id': $idVenda}, function(data){
+			$('#cboTitular').html(data);
+			});	
+		</script>";
 }
 ?>	
 		

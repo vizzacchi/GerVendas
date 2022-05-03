@@ -58,10 +58,10 @@ include "../../inc/header.php";
                     <select class="form-control" id="cboOperadora" name="cboOperadora">
                         <option value="0" selected>Todas</option>
                         <?php
-                            $qsql = "Select distinct cod_operadora, operadora from venda, operadora where venda.cod_operadora = operadora.id order by operadora";
+                            $qsql = "Select distinct cod_operadora, operadora, nome_abrev from venda, operadora where venda.cod_operadora = operadora.id order by operadora";
                             if($rs=mysqli_query($conn,$qsql)){
                                 while($reg=mysqli_fetch_array($rs)){
-                                    echo "<option value = '".$reg['cod_operadora']."'>".$reg['operadora']."</option>";
+                                    echo "<option value = '".$reg['cod_operadora']."'>".$reg['nome_abrev']."</option>";
                                 }
                             }
                         ?>
