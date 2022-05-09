@@ -20,7 +20,7 @@ if($_POST['id']){
             $nomeCliente    = $reg['nome'];
             $cpf            = $reg['cpf'];		
             $vigencia       = date("d/m/Y",strtotime($reg['vigencia']));
-			$vencimento     = date("d/m/Y",strtotime($reg['vencimento']));
+			$vencimento     = $reg['vencimento'];
             $data           = date("d/m/Y",strtotime($reg['dataVenda']));	
 			$cadastradoPor  = $reg['cadastradoPor'];
 			$codigoEmpresa  = $reg['codigo'];
@@ -80,9 +80,10 @@ if($_POST['id']){
             <div class="col-sm-2">Contrato: <span class="tituloDetalhes"><?php  echo $contrato;?> </span></div>
             <div class="col-sm-4">Cliente: <span class="tituloDetalhes"><?php  echo $nomeCliente;?> </span></div>
             <div class="col-sm-2">Vigência: <span class="tituloDetalhes"><?php  echo $vigencia;?> </span></div>
+			<div class="col-sm-2">Vencimento: <span class="tituloDetalhes"><?php  echo $vencimento;?> </span></div>
 			<?php 
 			  if($tipoPlano=='PJ'){?>
-				<div class="col-sm-4">Código Empresa: <span class="tituloDetalhes"><?php 
+				<div class="col-sm-2">Código Empresa: <span class="tituloDetalhes"><?php 
 					if($codigoEmpresa<>""){
 						echo $codigoEmpresa;
 					}
@@ -186,7 +187,7 @@ if($_POST['id']){
 							<td><?php 
 								if($reg['codigo']<>""){
 									echo $reg['codigo'];
-								}else{
+								}elseif($reg['tipoBeneficiario']<>2){
 									$idBeneficiario = $reg['id'];
 									$idCampo = "txt".$idBeneficiario;?>
 									<spam id="<?php echo $idCampo; ?>" >

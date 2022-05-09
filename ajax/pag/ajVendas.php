@@ -82,7 +82,7 @@ if(!empty($_POST['corretora']) and $_POST['corretora']<>'0'){
 if(!empty($_POST['vendedor']) and $_POST['vendedor']<>'0'){
     $vendedor = "and cod_vendedor = '".$_POST['vendedor']."'";
 }else{
-    if ($_SESSION['perfil']<=2){
+    if ($_SESSION['perfil']<=1){
         $vendedor="";   
     }else{
         
@@ -100,7 +100,7 @@ if($cliente == "" and $mes == "" and $tipo == "" and $operadora=="" and $correto
 }else{
     $condicao = "";
 }
-$qsql = "SELECT venda.dataVenda, venda.id as idVenda, venda.mes, venda.nome, venda.tipoPlano, venda.cod_operadora, venda.cod_plano, venda.valor, venda.numVidas, venda.cod_vendedor, venda.vigencia, venda.situacao, operadora.nome_abrev, planos.plano, corretores.corretor  FROM `venda`, `operadora`, `planos`, `corretores` 
+$qsql = "SELECT venda.dataVenda, venda.id as idVenda, venda.mes, venda.nome, venda.tipoPlano, venda.cod_operadora, venda.cod_plano, venda.valor, venda.numVidas, venda.cod_vendedor, venda.contrato, venda.vigencia, venda.situacao, operadora.nome_abrev, planos.plano, corretores.corretor  FROM `venda`, `operadora`, `planos`, `corretores` 
 	WHERE venda.cod_operadora = operadora.id and
 	      venda.cod_plano     = planos.id and 
 		  venda.cod_vendedor  = corretores.id and
@@ -116,7 +116,8 @@ if($rs=mysqli_query($conn,$qsql)){
                 <tr>
                     <th scope="col" style="font-size: 0.8rem">Cadastro</th>
 					<th scope="col" style="font-size: 0.8rem">Mes</th>
-                    <th scope="col" style="font-size: 0.8rem">Nome Cliente</th>
+                    <th scope="col" style="font-size: 0.8rem">Contrato</th>
+					<th scope="col" style="font-size: 0.8rem">Nome Cliente</th>
                     <th scope="col" style="font-size: 0.8rem">Tipo</th>
                     <th scope="col" style="font-size: 0.8rem">Operadora</th>
                     <th scope="col" style="font-size: 0.8rem">Plano</th>
@@ -145,6 +146,7 @@ if($rs=mysqli_query($conn,$qsql)){
 				?>>
 			<td style="font-size: 0.7rem"><?php echo date("d/m/Y",strtotime($reg['dataVenda']));?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['mes'];?></td>
+			<td style="font-size: 0.7rem"><?php echo $reg['contrato'];?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['nome'];?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['tipoPlano'];?></td>
             <td style="font-size: 0.7rem"><?php echo $reg['nome_abrev'];?></td>
@@ -195,7 +197,7 @@ $qsqlSum = "SELECT SUM(venda.valor) as soma, SUM(venda.numVidas) as vidas, corre
 			<?php	
 			}?>
 				<tr>
-					<th colspan="2">Totais</th>
+					<th colspan="2" style="text-align: end">TOTAL</th>
 					<th><?php echo $totalVidas; ?></th>
 					<th><?php echo number_format($totalValor,2,',','.'); ?></th>
 				</tr>

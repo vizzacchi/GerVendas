@@ -49,10 +49,10 @@
 <file name="ajCadastroCBOplano.php" server="planosdesaudevaledoparaiba.com.br" local="132960593646642862" remote="132960593400000000" Dst="0" />
 <file name="ajCadastroCorretor.php" server="planosdesaudevaledoparaiba.com.br" local="132886211600000000" remote="132945889800000000" Dst="0" />
 <file name="ajCadastroInclusao2.php" server="planosdesaudevaledoparaiba.com.br" local="132900311540000000" remote="132945904200000000" Dst="0" />
-<file name="ajVendas.php" server="planosdesaudevaledoparaiba.com.br" local="132957327315060809" remote="132957327000000000" Dst="0" />
-<file name="ajVendasOperadora.php" server="planosdesaudevaledoparaiba.com.br" local="132957346539872014" remote="132957346200000000" Dst="0" />
+<file name="ajVendas.php" server="planosdesaudevaledoparaiba.com.br" local="132963138939005582" remote="132963138600000000" Dst="0" />
+<file name="ajVendasOperadora.php" server="planosdesaudevaledoparaiba.com.br" local="132960912640204202" remote="132960913200000000" Dst="0" />
 <file name="ajVendasCBOVendedor.php" server="planosdesaudevaledoparaiba.com.br" local="132952244624558431" remote="132953625000000000" Dst="0" />
-<file name="ajVendasDetalhe.php" server="planosdesaudevaledoparaiba.com.br" local="132955516578371656" remote="132955577400000000" Dst="0" />
+<file name="ajVendasDetalhe.php" server="planosdesaudevaledoparaiba.com.br" local="132961419128677852" remote="132961419000000000" Dst="0" />
 <file name="ajVendasVendedor.php" server="planosdesaudevaledoparaiba.com.br" local="132946765797300282" remote="132947592000000000" Dst="0" />
 <file name="ajVendaCancela.php" server="planosdesaudevaledoparaiba.com.br" local="132952254741405556" remote="132953625000000000" Dst="0" />
 <file name="ajVendaEmite.php" server="planosdesaudevaledoparaiba.com.br" local="132952253686254502" remote="132953625000000000" Dst="0" />
@@ -60,4 +60,5 @@
 <file name="ajVendaCarteirinha.php" server="planosdesaudevaledoparaiba.com.br" local="132955513757961237" remote="132955577400000000" Dst="0" />
 <file name="ajVendaCarteirinhaBeneficiario.php" server="planosdesaudevaledoparaiba.com.br" local="132955495192350150" remote="132955577400000000" Dst="0" />
 <file name="ajCadastroContratoUnimed.php" server="planosdesaudevaledoparaiba.com.br" local="132956421798977307" remote="132956425200000000" Dst="0" />
+<file name="ajVendaInternaPesquisa.php" server="planosdesaudevaledoparaiba.com.br" local="132963380750606283" remote="132963380400000000" Dst="0" />
 </dwsync>

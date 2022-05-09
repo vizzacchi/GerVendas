@@ -12,7 +12,7 @@ include "../../inc/header.php";
               <div class="form-group row">
                 <div class="col-sm-3">
                   <label>Nome Cliente:</label>
-                  <input type="text" class="form-control" id="txtNomeCliente" name="txtNomeCliente" onChange="pesquisar()">
+                  <input type="text" class="form-control" id="txtNomeCliente" name="txtNomeCliente" onKeyUp ="pesquisar()">
                 </div>
                 <div class="col-sm-3">
                     <label>Mês:</label>
@@ -48,8 +48,8 @@ include "../../inc/header.php";
                 <div class="col-sm-3">  
                     <label>Tipo de Contrato:</label>
                     <select class="form-control" id="cboTipo" name="cboTipo">
-                        <option value = 'PF'>Só Pessoa Física</option>
-                        <option value = 'PJ'>Só Pessoa Jurídica</option> 
+                        <option value = "PF">Só Pessoa Física</option>
+                        <option value = "PJ">Só Pessoa Jurídica</option> 
                         <option value = "0" selected>Todas os tipos</option>
                     </select>                   
                 </div>

@@ -410,6 +410,9 @@ function processaInclusao(){
 						   return false;
 						}
 					}
+				}else{
+					alert("Não foi possivel cadastrar a proposta - Request!!!");
+					return false;
 				}
 			}	
 };       
